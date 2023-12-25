@@ -1,0 +1,12 @@
+{
+   "name": "@rimutec/ts-git-info",
+   "version": "0.9.0",
+   "description": "A simple package to get git information from a git repository.",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "keywords": [],
+   "author": "RimuTec Ltd",
+   "license": "ISC"
+}
