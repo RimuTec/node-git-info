@@ -2,8 +2,16 @@
 
 Welcome! This nodejs library `ts-git-info` is a simple wrapper around the `git` command line tool. It provides a simple interface to get information about the current git repository.
 
-
 It is meant to be a TypeScript equivalent for [`node-git-info`]](https://www.npmjs.com/package/node-git-info) which is written in JavaScript but hasn't been upgraded since November 2016.
+
+Also, `node-git-info` references libraries that are no longer maintained. This library uses [`nodegit`](https://www.npmjs.com/package/nodegit) instead.
+
+Furthermore, `node-git-info` references packages which in turn have subdependencies that have been deprecated:
+- har-validator
+- request
+- uuid
+
+Finally, `node-git-info` references a package named `istanbul` which doesn't exist anymore.
 
 ## Dev Environment
 
