@@ -1,0 +1,38 @@
+# Documentation of compose spec can be found at https://github.com/compose-spec/compose-spec
+# [Manfred, 21apr2023]
+
+version: '3.7'
+
+# According to the compose spec we can specify the compose project name here. However, VS Code does
+# not honor this as of 21 Apr 2023. Therefore there is a .env file at the root of this git repository
+# in which the environment variable COMPOSE_PROJECT_NAME is defined as 'rimutec'. Once VS Code supports
+# the top-level element 'name', the following can be used instead.
+name: 'rimutec'
+# [Manfred, 26dec2023]
+
+services:
+   # change the service name, the container name and the hostname for each dev container that connects
+   # to the same virtual network. [Manfred, 29jul2022]
+   ts-git-info-dev:
+      image: ts-git-info-dev:0.1
+      build: .
+      container_name: ts-git-info-dev
+      hostname: ts-git-info-dev.local
+      working_dir: /work
+      # ports:
+        #  - "30701:3000" # By default express.js uses port 3000
+         # Using double quotes for port mapping to avoid YAML reading it as a number with a different base
+         # e.g. "3333:22" would result in port numbers greater than 130000 which are clearly invalid.
+         # Without double quotes YAML interprets it as a number based on 22. [Manfred, 24aug2022]
+      volumes:
+         - ..:/work
+      environment:
+         - COMPOSE_PROJECT_NAME=rimutec
+         - EXPRESS_PORT=3000
+         - NODE_ENV=local
+      command: bash -c "/work/.devcontainer/init.sh && sleep infinity"
+      networks:
+         rimutec:
+
+networks:
+   rimutec:

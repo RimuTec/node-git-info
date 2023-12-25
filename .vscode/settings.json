@@ -1,0 +1,25 @@
+{
+   "editor.formatOnSave": true,
+   "editor.guides.bracketPairs": true,
+   "editor.tabSize": 3,
+   "git.rebaseWhenSync": true,
+   "jestrunner.codeLensSelector": "**/*.{micro,integration}.{js,jsx,ts,tsx}",
+   "remote.restoreForwardedPorts": false,
+   "remote.autoForwardPortsSource": "output",
+   "remote.autoForwardPorts": false,
+   "remote.portsAttributes": {
+      "3000": {
+         "onAutoForward": "ignore"
+      },
+      "3004": {
+         "onAutoForward": "ignore"
+      },
+      "443": {
+         "protocol": "https"
+      },
+      "8443": {
+         "protocol": "https"
+      }
+   },
+   "typescript.preferences.quoteStyle": "single",
+}
