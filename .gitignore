@@ -3,3 +3,4 @@ build
 coverage
 tsoa-generated
 .pnpm-store
+git.properties
