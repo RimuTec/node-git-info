@@ -28,7 +28,6 @@
    ],
    "bin": "bin/ts-git-info",
    "dependencies": {
-      "bluebird": "3.7.2",
       "child-process-promise": "2.2.1",
       "command-line-args": "5.2.1",
       "moment": "2.30.1"
