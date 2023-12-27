@@ -5,6 +5,7 @@
    "main": "index.js",
    "scripts": {
       "build": "./remove-erroneous-files.sh && tsc",
+      "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
       "test:coverage": "jest --coverage --passWithNoTests --testMatch '**/?(*.)+(micro|integration).[jt]s?(x)'",
       "test:integration": "jest --passWithNoTests --testMatch '/work/src/**/*.integration.ts'",
