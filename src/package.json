@@ -1,9 +1,10 @@
 {
-   "name": "@rimutec/ts-git-info",
+   "name": "ts-git-info",
    "version": "0.9.0",
    "description": "A simple package to get git information from a git repository.",
-   "main": "index.js",
+   "main": "build/index.js",
    "scripts": {
+      "tgi": "ts-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
       "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
@@ -26,7 +27,9 @@
       "properties",
       "info"
    ],
-   "bin": "bin/ts-git-info",
+   "bin": {
+      "ts-git-info": "./build/index.js"
+   },
    "dependencies": {
       "child-process-promise": "2.2.1",
       "command-line-args": "5.2.1",
@@ -34,6 +37,7 @@
    },
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
+      "@types/command-line-args": "5.2.3",
       "@types/jest": "29.5.11",
       "@types/mock-fs": "4.13.4",
       "@types/node": "20.10.5",

@@ -1,6 +1,9 @@
+#!/usr/bin/env node
 'use strict';
-var gitProperties = require('./lib/gitProperties');
-var commandLineArgs = require('command-line-args')
+// var gitProperties = require('./lib/gitProperties');
+import * as gitProperties from './gitProperties';
+// var commandLineArgs = require('command-line-args')
+import commandLineArgs = require('command-line-args');
 
 // library's entry point
 var execute = function () {
@@ -31,4 +34,3 @@ var execute = function () {
 execute();
 
 module.exports = execute;
-
