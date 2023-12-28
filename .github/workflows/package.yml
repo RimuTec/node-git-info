@@ -1,0 +1,63 @@
+name: Build ts-git-info Package
+
+# Github documentation for publishing packages to Github Package Registry can be found here:
+# https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-to-github-packages
+# Automatic token authentication and using the GITHUB_TOKEN in a workflow:
+# https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+# Example workflow for publishing a Node.js package:
+# https://github.com/github-packages-examples/npm-publish/blob/master/.github/workflows/publish.yml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: ${{ github.repository_owner }}
+
+
+      - name: Print working directory
+        run: pwd
+
+      - name: Install pnpm
+        run: npm install -g pnpm@8.13.1
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: ./src
+
+      - name: Build Package
+        run: |
+          whoami
+          pwd
+          pnpm build
+        working-directory: ./src
+
+      - name: Prepare for publishing
+        run: |
+          echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
+
+      - name: Publish
+        run: |
+          cat /home/runner/work/_temp/.npmrc
+          npm publish
+        working-directory: ./src
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The following is NOT in the Github documentation but is required to make this work:
+          NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com/RimuTec'
