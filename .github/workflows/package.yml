@@ -64,12 +64,12 @@ jobs:
                # Fetch the history so we can access the last commit:
                git fetch --depth=2
                # Get the version from the last commit
-               OLD_VERSION=$(git show HEAD^:package.json | jq -r '.version')
+               OLD_VERSION=$(git show HEAD^:src/package.json | jq -r '.version')
                # Get the version from the current commit
-               NEW_VERSION=$(jq -r '.version' package.json)
+               NEW_VERSION=$(jq -r '.version' src/package.json)
                # # Checkout back to the current commit's version
-               # git checkout HEAD -- package.json
-               # NEW_VERSION=$(jq -r '.version' package.json)
+               # git checkout HEAD -- src/package.json
+               # NEW_VERSION=$(jq -r '.version' src/package.json)
                if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
                   echo "Version changed from $OLD_VERSION to $NEW_VERSION"
                   echo "CHANGED=true" >> $GITHUB_ENV
