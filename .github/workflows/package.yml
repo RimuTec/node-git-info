@@ -8,91 +8,76 @@ name: Build node-git-info Package
 # https://github.com/github-packages-examples/npm-publish/blob/master/.github/workflows/publish.yml
 
 on:
-  push:
-    branches:
-      - main
+   push:
+      branches:
+         - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+   build:
+      runs-on: ubuntu-latest
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: ${{ github.repository_owner }}
+      permissions:
+         contents: read
+         packages: write
+      steps:
+         -  name: Checkout code
+            uses: actions/checkout@v4
 
+         -  name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+               node-version: '20.x'
+               registry-url: 'https://npm.pkg.github.com'
+               # Defaults to the user or organization that owns the workflow file
+               scope: ${{ github.repository_owner }}
 
-      - name: Print working directory
-        run: pwd
+         -  name: Print working directory
+            run: pwd
 
-      - name: Install pnpm
-        run: npm install -g pnpm@8.13.1
+         -  name: Install pnpm
+            run: npm install -g pnpm@8.13.1
 
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: ./src
+         -  name: Install dependencies
+            run: pnpm install
+            working-directory: ./src
 
-      - name: Build Package
-        run: |
-          whoami
-          pwd
-          pnpm build
-        working-directory: ./src
+         -  name: Build Package
+            run: |
+               whoami
+               pwd
+               pnpm build
+            working-directory: ./src
 
-      -  name: Run test suite
-         run: |
-            pnpm test
-         working-directory: ./src
+         -  name: Run test suite
+            run: |
+               pnpm test
+            working-directory: ./src
 
-      - name: Prepare for publishing
-        run: |
-          echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
+         -  name: Prepare for publishing
+            run: |
+               echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
 
-      # -  name: Check if version has changed
-      #    id: version_change
-      #    run: |
-      #       ls -la
-      #       echo "#####"
-      #       git diff --exit-code --quiet ./src/package.json
-      #       if [ $? -eq 0 ]
-      #       then
-      #          echo "No changes to package.json. Skipping publish."
-      #          echo "VERSION_CHANGE=false" >> $GITHUB_ENV
-      #       else
-      #          echo "Changes to package.json detected. Publishing."
-      #          echo "VERSION_CHANGE=true" >> $GITHUB_ENV
-      #       fi
+         # check if the file ./src/package.json has changed:
+         -  name: changes
+            uses: dorny/paths-filter@v2
+            id: changes
+            with:
+               filters: |
+                  changed:
+                     - ./src/package.json
 
-      # check if the file ./src/package.json has changed:
-      -  name: changes
-         uses: dorny/paths-filter@v2
-         id: changes
-         with:
-            filters: |
-               changed:
-                  - ./src/package.json
+         -  name: No changes detected
+            if: ${{ steps.changes.outputs.changed == 'false' }}
+            run: |
+               echo "No changes to ./src/package.json. Skipping publish."
 
-      -  name: No changes detected
-         if: ${{ steps.changes.outputs.changed == 'false' }}
-         run: |
-            echo "No changes to ./src/package.json. Skipping publish."
-
-      -  name: Publish
-         if: ${{ steps.changes.outputs.changed == 'true' }}
-         run: |
-            cat /home/runner/work/_temp/.npmrc
-            npm publish
-         working-directory: ./src
-         env:
-            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            # The following is NOT in the Github documentation but is required to make this work:
-            NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com/RimuTec'
+         -  name: Publish
+            if: ${{ steps.changes.outputs.changed == 'true' }}
+            run: |
+               cat /home/runner/work/_temp/.npmrc
+               npm publish
+            working-directory: ./src
+            env:
+               NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+               # The following is NOT in the Github documentation but is required to make this work:
+               NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com/RimuTec'
