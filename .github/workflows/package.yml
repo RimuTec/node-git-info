@@ -57,6 +57,35 @@ jobs:
             run: |
                echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
 
+
+         -  name: Check for version change
+            id: version-check
+            run: |
+               git fetch origin ${{ github.base_ref }}
+               # Checkout the base ref version of package.json
+               git checkout origin/${{ github.base_ref }} -- package.json
+               OLD_VERSION=$(jq -r '.version' package.json)
+               # Checkout back to the current commit's version
+               git checkout HEAD -- package.json
+               NEW_VERSION=$(jq -r '.version' package.json)
+               if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
+                  echo "Version changed from $OLD_VERSION to $NEW_VERSION"
+                  echo "CHANGED=true" >> $GITHUB_ENV
+               else
+                  echo "Version unchanged"
+                  echo "CHANGED=false" >> $GITHUB_ENV
+
+         -  name: Conditional Step - version has changed
+            if: env.CHANGED == 'true'
+            run: |
+               echo "Version changed. Proceeding with publish."
+
+         -  name: Conditional Step - version has NOT change
+            if: env.CHANGED == 'false'
+            run: |
+               echo "Version has not changed. Nothing to publish."
+
+
          # check if the file ./src/package.json has changed:
          -  name: changes
             uses: dorny/paths-filter@v2
