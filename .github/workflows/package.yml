@@ -57,28 +57,42 @@ jobs:
         run: |
           echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
 
-      -  name: Check if version has changed
-         id: version_change
-         run: |
-            ls -la
-            echo "#####"
-            git diff --exit-code --quiet ./src/package.json
-            if [ $? -eq 0 ]
-            then
-               echo "No changes to package.json. Skipping publish."
-               echo "VERSION_CHANGE=false" >> $GITHUB_ENV
-            else
-               echo "Changes to package.json detected. Publishing."
-               echo "VERSION_CHANGE=true" >> $GITHUB_ENV
-            fi
+      # -  name: Check if version has changed
+      #    id: version_change
+      #    run: |
+      #       ls -la
+      #       echo "#####"
+      #       git diff --exit-code --quiet ./src/package.json
+      #       if [ $? -eq 0 ]
+      #       then
+      #          echo "No changes to package.json. Skipping publish."
+      #          echo "VERSION_CHANGE=false" >> $GITHUB_ENV
+      #       else
+      #          echo "Changes to package.json detected. Publishing."
+      #          echo "VERSION_CHANGE=true" >> $GITHUB_ENV
+      #       fi
 
-      - name: Publish
-        if: env.VERSION_CHANGE == 'true'
-        run: |
-          cat /home/runner/work/_temp/.npmrc
-          npm publish
-        working-directory: ./src
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # The following is NOT in the Github documentation but is required to make this work:
-          NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com/RimuTec'
+      # check if the file ./src/package.json has changed:
+      -  name: changes
+         uses: dorny/paths-filter@v2
+         id: changes
+         with:
+            filters: |
+               changed:
+                  - ./src/package.json
+
+      -  name: No changes detected
+         if: ${{ steps.changes.outputs.changed == 'false' }}
+         run: |
+            echo "No changes to ./src/package.json. Skipping publish."
+
+      -  name: Publish
+         if: ${{ steps.changes.outputs.changed == 'true' }}
+         run: |
+            cat /home/runner/work/_temp/.npmrc
+            npm publish
+         working-directory: ./src
+         env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # The following is NOT in the Github documentation but is required to make this work:
+            NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com/RimuTec'
