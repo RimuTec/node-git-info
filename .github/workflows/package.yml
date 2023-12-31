@@ -48,6 +48,11 @@ jobs:
           pnpm build
         working-directory: ./src
 
+      -  name: Run test suite
+         run: |
+            pnpm test
+         working-directory: ./src
+
       - name: Prepare for publishing
         run: |
           echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
