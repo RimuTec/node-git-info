@@ -1,6 +1,6 @@
 {
    "name": "@RimuTec/node-git-info",
-   "version": "0.9.0",
+   "version": "0.9.1",
    "description": "A simple package to get git information from a git repository.",
    "main": "build/index.js",
    "scripts": {
