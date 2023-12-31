@@ -61,13 +61,15 @@ jobs:
          -  name: Check for version change
             id: version-check
             run: |
-               git fetch origin ${{ github.base_ref }}
-               # Checkout the base ref version of package.json
-               git checkout origin/${{ github.base_ref }} -- package.json
-               OLD_VERSION=$(jq -r '.version' package.json)
-               # Checkout back to the current commit's version
-               git checkout HEAD -- package.json
+               # Fetch the history so we can access the last commit:
+               git fetch --depth=2
+               # Get the version from the last commit
+               OLD_VERSION=$(git show HEAD^:package.json | jq -r '.version')
+               # Get the version from the current commit
                NEW_VERSION=$(jq -r '.version' package.json)
+               # # Checkout back to the current commit's version
+               # git checkout HEAD -- package.json
+               # NEW_VERSION=$(jq -r '.version' package.json)
                if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
                   echo "Version changed from $OLD_VERSION to $NEW_VERSION"
                   echo "CHANGED=true" >> $GITHUB_ENV
