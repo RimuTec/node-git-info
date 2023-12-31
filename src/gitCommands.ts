@@ -36,5 +36,5 @@ export async function getCommitMessageShort() {
 
 export async function getCommitTime() {
    const result = await exec('git log -1 --pretty=format:%ct');
-   return DateTime.fromSeconds(parseInt(result.stdout.trim())).toISO();
+   return DateTime.fromSeconds(parseInt(result.stdout.trim())).toISO().replace('+00:00', 'Z');
 }

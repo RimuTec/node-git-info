@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 'use strict';
-// var gitProperties = require('./lib/gitProperties');
 import * as gitProperties from './gitProperties';
-// var commandLineArgs = require('command-line-args')
-import commandLineArgs = require('command-line-args');
+import commandLineArgs from 'command-line-args';
 
 // library's entry point
 var execute = function () {
@@ -29,6 +27,8 @@ var execute = function () {
 
    // write git.properties file
    gitProperties.write(options.directory, callback);
+
+   console.log('[@RimuTec/node-git-info] git.properties has been created successfully.');
 }
 
 execute();

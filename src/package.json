@@ -1,10 +1,10 @@
 {
    "name": "@RimuTec/node-git-info",
-   "version": "0.9.1",
-   "description": "A simple package to get git information from a git repository.",
+   "version": "0.9.2",
+   "description": "A simple package to get git information from a git repository. Drop-in replacement for `node-git-info`.",
    "main": "build/index.js",
    "scripts": {
-      "ngi": "pnpm link -g . && node-git-info",
+      "ngi": "pnpm link -g . && pnpm build && node-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
       "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
