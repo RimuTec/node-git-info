@@ -57,7 +57,21 @@ jobs:
         run: |
           echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
 
+      -  name: Check if version has changed
+         id: version_change
+         run: |
+            git diff --exit-code --quiet package.json
+            if [ $? -eq 0 ]
+            then
+               echo "No changes to package.json. Skipping publish."
+               echo "VERSION_CHANGE=false" >> $GITHUB_ENV
+            else
+               echo "Changes to package.json detected. Publishing."
+               echo "VERSION_CHANGE=true" >> $GITHUB_ENV
+            fi
+
       - name: Publish
+        if: env.VERSION_CHANGE == 'true'
         run: |
           cat /home/runner/work/_temp/.npmrc
           npm publish
