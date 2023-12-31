@@ -4,7 +4,7 @@
    "description": "A simple package to get git information from a git repository.",
    "main": "build/index.js",
    "scripts": {
-      "tgi": "node-git-info",
+      "ngi": "pnpm link -g . && node-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
       "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
@@ -33,7 +33,7 @@
    "dependencies": {
       "child-process-promise": "2.2.1",
       "command-line-args": "5.2.1",
-      "moment": "2.30.1"
+      "ts-luxon": "4.5.1"
    },
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
