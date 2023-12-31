@@ -1,17 +1,60 @@
-# ts-git-info
+# node-git-info
 
-Welcome! This nodejs library `ts-git-info` is a simple wrapper around the `git` command line tool. It provides a simple interface to get information about the current git repository.
+Welcome! This nodejs library `@RimuTec/node-git-info` is a simple wrapper around the `git` command line tool. It provides an interface for getting information about the current git repository.
 
-It is meant to be a TypeScript equivalent for [`node-git-info`](https://www.npmjs.com/package/node-git-info) which is written in JavaScript but hasn't been upgraded since November 2016.
+It is meant to be a replacement for [`node-git-info`](https://www.npmjs.com/package/node-git-info) which was last published in November 2016. Since then things have changed in particular in terms of dependencies. This has resulted in the following issues.
 
-Also, `node-git-info` references libraries that are no longer maintained. This library uses [`nodegit`](https://www.npmjs.com/package/nodegit) instead.
+## Vulnerabilities
 
-Furthermore, `node-git-info` references packages which in turn have subdependencies that have been deprecated:
+As of writing, the original `node-git-info` has 2 vulnerabilities, both with high severity:
+
+```bash
+$ npm audit
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Regular Expression Denial of Service in moment         │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ moment                                                 │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ <2.19.3                                                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=2.19.3                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > node-git-info@1.1.0 > moment@2.16.0                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-446m-mv8f-q348      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Path Traversal: 'dir/../../filename' in moment.locale  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ moment                                                 │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ <2.29.2                                                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=2.29.2                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > node-git-info@1.1.0 > moment@2.16.0                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-8hfj-j24r-96c4      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+2 vulnerabilities found
+Severity: 2 high
+```
+
+This is the main reason for creating this library. `@RimuTec/node-git-info` has no vulnerabilities as of writing.
+
+
+## Legacy Dependencies
+
+`moment` is a library that is considered legacay since September 2020 according to their website (see https://momentjs.com/docs/#/-project-status/). One of their recommendations is to use `luxon` instead, which is what `@RimuTec/node-git-info` uses instead.
+
+## Deprecated Dependencies
+
+Furthermore, the original `node-git-info` references packages which in turn have subdependencies that have been deprecated:
 - har-validator
+- istanbul
 - request
 - uuid
 
-Finally, `node-git-info` references a package named `istanbul` which doesn't exist anymore.
 
 ## Example Output
 

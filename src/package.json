@@ -1,10 +1,10 @@
 {
-   "name": "@RimuTec/ts-git-info",
+   "name": "@RimuTec/node-git-info",
    "version": "0.9.0",
    "description": "A simple package to get git information from a git repository.",
    "main": "build/index.js",
    "scripts": {
-      "tgi": "ts-git-info",
+      "tgi": "node-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
       "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
@@ -20,7 +20,7 @@
    "license": "MIT",
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/RimuTec/ts-git-info.git"
+      "url": "git+https://github.com/RimuTec/node-git-info.git"
    },
    "keywords": [
       "git",
@@ -28,7 +28,7 @@
       "info"
    ],
    "bin": {
-      "ts-git-info": "./build/index.js"
+      "node-git-info": "./build/index.js"
    },
    "dependencies": {
       "child-process-promise": "2.2.1",

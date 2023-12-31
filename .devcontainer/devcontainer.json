@@ -1,11 +1,11 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-   "name": "RimuTec ts-git-info",
+   "name": "RimuTec node-git-info",
    "dockerComposeFile": [
       "docker-compose.yml"
    ],
    // The name of the following service has to match one of the services in docker-compose.yml
-   "service": "ts-git-info-dev",
+   "service": "node-git-info-dev",
    "workspaceFolder": "/work",
    "customizations": {
       "vscode": {

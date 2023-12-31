@@ -13,11 +13,11 @@ name: 'rimutec'
 services:
    # change the service name, the container name and the hostname for each dev container that connects
    # to the same virtual network. [Manfred, 29jul2022]
-   ts-git-info-dev:
-      image: ts-git-info-dev:0.1
+   node-git-info-dev:
+      image: node-git-info-dev:0.1
       build: .
-      container_name: ts-git-info-dev
-      hostname: ts-git-info-dev.local
+      container_name: node-git-info-dev
+      hostname: node-git-info-dev.local
       working_dir: /work
       # ports:
         #  - "30701:3000" # By default express.js uses port 3000

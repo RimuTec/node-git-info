@@ -1,4 +1,4 @@
-name: Build ts-git-info Package
+name: Build node-git-info Package
 
 # Github documentation for publishing packages to Github Package Registry can be found here:
 # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-to-github-packages
