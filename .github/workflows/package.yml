@@ -60,7 +60,9 @@ jobs:
       -  name: Check if version has changed
          id: version_change
          run: |
-            git diff --exit-code --quiet package.json
+            ls -la
+            echo "#####"
+            git diff --exit-code --quiet ./src/package.json
             if [ $? -eq 0 ]
             then
                echo "No changes to package.json. Skipping publish."
