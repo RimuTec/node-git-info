@@ -125,7 +125,7 @@ jobs:
                sudo chown -R runner:docker ./.git
                ls -l .git/
                echo "##########"
-               git add service/package.json service/pnpm-lock.yaml
+               git add src/package.json src/pnpm-lock.yaml
                git commit -m "Upgrade dependencies"
                git push
             env:
@@ -134,7 +134,7 @@ jobs:
          # -  name: Commit changes
          #    if: ${{ env.changed == 'true' }}
          #    run: |
-         #       git add service/package.json service/pnpm-lock.yaml
+         #       git add src/package.json src/pnpm-lock.yaml
          #       git commit -m "Upgrade dependencies"
          #       git push
          #    env:
