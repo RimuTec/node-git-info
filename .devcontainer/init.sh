@@ -15,6 +15,12 @@ runuser -l node -c 'cd /work && git config branch.autosetuprebase always'
 
 
 ################################################################################
+# Setup pnpm for user 'node'
+# runuser -l node -c 'cd /work && pnpm setup'
+# runuser -l node -c 'source /home/node/.bashrc'
+
+
+################################################################################
 # Make 'p' an alias for 'pnpm':
 runuser -l node -c 'echo "alias p='pnpm'" >> /home/node/.bashrc && source /home/node/.bashrc'
 

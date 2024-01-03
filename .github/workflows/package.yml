@@ -57,7 +57,6 @@ jobs:
             run: |
                echo "@RimuTec:registry=https://npm.pkg.github.com" > .npmrc
 
-
          -  name: Check for version change
             id: version-check
             run: |
