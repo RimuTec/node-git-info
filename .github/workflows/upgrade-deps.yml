@@ -1,0 +1,141 @@
+name: Upgrade Dependencies
+
+# This job works as expected as of the date of this comment. We'll need to monitor
+# this triggered job for a few days to confirm that the scheduled job doesn't have
+# a deviating behavior.
+# The job in this workflow can be improved with potentially two different options
+# the dev container should get a non-root user that has a UID equal to the UID of
+# the current user and a GUI of the group that the current user is in. This would
+# then result in all files the non-root user creates to have the idential UID and
+# GID of the current user. This would then avoid the chown command.
+# [Manfred, 17dec2023]
+
+on:
+   schedule:
+      - cron: '0 0 * * *'
+   workflow_dispatch:
+
+jobs:
+   upgrade:
+      runs-on: ubuntu-latest
+      env:
+         CONTAINER_NAME: node-git-info-dev
+
+      steps:
+         -  name: Checkout code
+            uses: actions/checkout@v4
+            # Newer version may be available from https://github.com/actions/checkout
+            # Last version check: 04 Dec 2023
+
+         -  name: Build dev container
+            run: |
+               docker compose -f .devcontainer/docker-compose.yml -p rimutec build
+
+         -  name: Start dev container
+            run: |
+               docker compose -f .devcontainer/docker-compose.yml -p rimutec up -d
+
+         -  name: Diagnostics before chown
+            run: |
+               id -u
+               id -g
+               echo "##########"
+               id -u runner
+               getent group docker | cut -d: -f3
+               echo "##########"
+               whoami
+               echo "##########"
+               ls -l .git/
+               echo "##########"
+               docker exec ${{ env.CONTAINER_NAME }} ls -l /work
+               docker exec ${{ env.CONTAINER_NAME }} ls -l /work/src
+               echo "##########"
+               git status
+
+         -  name: Change owner of /work/src directory
+            # The following needs to have root privileges in the dev container, so don't run
+            # it as non-root user 'node'.
+            run: docker exec ${{ env.CONTAINER_NAME }} chown -R node:node /work/src
+
+         -  name: Restore dependencies
+            run: |
+               docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+               echo "##########"
+               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix ./src restore-deps
+               echo "##########"
+               docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+
+         -  name: Run upgrade-all script
+            run: |
+               docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+               echo "##########"
+               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix ./src upgrade-all
+               echo "##########"
+               docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+
+         -  name: Tear down dev container
+            run: |
+               docker compose -f .devcontainer/docker-compose.yml -p rimutec down
+
+         -  name: Show content of ~/.gitconfig
+            run: |
+               if [ -e ~/.gitconfig ]; then
+                  cat ~/.gitconfig
+               fi
+
+         -  name: Configure git
+            run: |
+               if [ -e ~/.gitconfig ]; then
+                  sudo rm ~/.gitconfig
+               fi
+               sudo touch ~/.gitconfig
+               cat ~/.gitconfig
+               git config --global user.name 'GitHub Actions'
+               git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+         -  name: Check for changes
+            id: git-diff
+            run: |
+               if git diff --quiet; then
+                  echo "changed=false" >> "$GITHUB_ENV"
+               else
+                  echo "changed=true" >> "$GITHUB_ENV"
+               fi
+
+         # In the following there are usages of "${{ env.changed == 'false'}}" which causes
+         # warnings "Context access might be invalid: changed". However, that is a false
+         # positive.
+
+         -  name: Run if no changes
+            if: ${{ env.changed == 'false' }}
+            run: |
+               echo "##### No changes found #####"
+
+         -  name: Commit changes
+            if: ${{ env.changed == 'true' }}
+            run: |
+               id -u runneradmin
+               id -g runneradmin
+               whoami
+               echo "##########"
+               ls -l .git/
+               echo "##########"
+               git status
+               echo "##########"
+               sudo chown -R runner:docker ./.git
+               ls -l .git/
+               echo "##########"
+               git add service/package.json service/pnpm-lock.yaml
+               git commit -m "Upgrade dependencies"
+               git push
+            env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+         # -  name: Commit changes
+         #    if: ${{ env.changed == 'true' }}
+         #    run: |
+         #       git add service/package.json service/pnpm-lock.yaml
+         #       git commit -m "Upgrade dependencies"
+         #       git push
+         #    env:
+         #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
