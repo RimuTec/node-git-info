@@ -83,28 +83,13 @@ jobs:
             run: |
                echo "Version changed. Proceeding with publish."
 
-         -  name: Conditional Step - version has NOT change
+         -  name: Conditional Step - version has NOT changed
             if: env.CHANGED == 'false'
             run: |
                echo "Version has not changed. Nothing to publish."
 
-
-         # check if the file ./src/package.json has changed:
-         -  name: changes
-            uses: dorny/paths-filter@v2
-            id: changes
-            with:
-               filters: |
-                  changed:
-                     - ./src/package.json
-
-         -  name: No changes detected
-            if: ${{ steps.changes.outputs.changed == 'false' }}
-            run: |
-               echo "No changes to ./src/package.json. Skipping publish."
-
          -  name: Publish
-            if: ${{ steps.changes.outputs.changed == 'true' }}
+            if: env.CHANGED == 'true'
             run: |
                cat /home/runner/work/_temp/.npmrc
                npm publish
