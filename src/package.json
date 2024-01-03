@@ -6,6 +6,7 @@
    "scripts": {
       "ngi": "pnpm link -g . && pnpm build && node-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
+      "restore-deps": "pnpm install --frozen-lockfile",
       "pre-commit": "./remove-intermediate-files.sh && pnpm install && pnpm build && pnpm test:coverage",
       "test": "pnpm test:micro && pnpm test:integration",
       "test:coverage": "jest --coverage --passWithNoTests --testMatch '**/?(*.)+(micro|integration).[jt]s?(x)'",
