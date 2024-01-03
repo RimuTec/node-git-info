@@ -76,6 +76,7 @@ jobs:
                else
                   echo "Version unchanged"
                   echo "CHANGED=false" >> $GITHUB_ENV
+               fi
 
          -  name: Conditional Step - version has changed
             if: env.CHANGED == 'true'
