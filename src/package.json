@@ -35,7 +35,7 @@
    "dependencies": {
       "child-process-promise": "2.2.1",
       "command-line-args": "5.2.1",
-      "ts-luxon": "4.5.2"
+      "ts-luxon": "5.0.0"
    },
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
