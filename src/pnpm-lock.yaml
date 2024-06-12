@@ -12,8 +12,8 @@ dependencies:
     specifier: 5.2.1
     version: 5.2.1
   ts-luxon:
-    specifier: 5.0.2
-    version: 5.0.2
+    specifier: 5.0.4
+    version: 5.0.4
 
 devDependencies:
   '@types/app-root-dir':
@@ -2953,8 +2953,8 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ts-luxon@5.0.2:
-    resolution: {integrity: sha512-bgvfmfpPYfOkmUnujufWLwEBLPkU9lteif+CQ5Mz/ZNdaF3/fEXDo2Do9cw/Qtt6+FTV9tP3yOvdySWPmJ+tWQ==}
+  /ts-luxon@5.0.4:
+    resolution: {integrity: sha512-Brbx8rQv4mGyGfltAhmtcdNb9fGnTT/lg5/K1Mhs0wV8IeE9Yr/+VfRIMCOll1ehaBo6PFJM8FvIvScYJDqeHA==}
     engines: {node: '>=13'}
     dev: false
 
