@@ -9,7 +9,7 @@ import { deleteFilesRecursivelyByName } from './utils';
 describe('git.properties', () => {
    const gitPropertiesFileName = 'git.properties';
    const gitPropertiesExpectedDefaultFileName = appRootDir + '/' + gitPropertiesFileName;
-   let tmpTestOutputFolder: string;
+   let tmpTestOutputFolder: string = '../tmp';
 
    async function checkGitPropertiesFileHasExpectedData(filePath: any) {
 
