@@ -20,7 +20,7 @@
             "mhutchie.git-graph",
             "ms-vsliveshare.vsliveshare",
             "mutantdino.resourcemonitor",
-            "qcz.restart-ts-server-button",
+            "okwang.restart-language-server", // Source: https://github.com/latel/restart-language-server
             "rtbenfield.vscode-jest-test-adapter",
             "tsandall.opa",
             "usernamehw.errorlens"

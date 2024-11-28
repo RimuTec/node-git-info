@@ -9,7 +9,13 @@ import { deleteFilesRecursivelyByName } from './utils';
 describe('git.properties', () => {
    const gitPropertiesFileName = 'git.properties';
    const gitPropertiesExpectedDefaultFileName = appRootDir + '/' + gitPropertiesFileName;
-   let tmpTestOutputFolder: string = '../tmp';
+   let tmpTestOutputFolder: string = './tmp';
+
+   beforeAll(() => {
+      if (!fs.existsSync(tmpTestOutputFolder)) {
+         fs.mkdirSync(tmpTestOutputFolder);
+      }
+   });
 
    async function checkGitPropertiesFileHasExpectedData(filePath: any) {
 
