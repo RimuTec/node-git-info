@@ -14,8 +14,9 @@ services:
    # change the service name, the container name and the hostname for each dev container that connects
    # to the same virtual network. [Manfred, 29jul2022]
    node-git-info-dev:
-      image: node-git-info-dev:0.1
-      build: .
+      build:
+         context: .
+         dockerfile: Dockerfile
       container_name: node-git-info-dev
       hostname: node-git-info-dev.local
       working_dir: /work
