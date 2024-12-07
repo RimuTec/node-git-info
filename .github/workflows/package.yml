@@ -92,7 +92,7 @@ jobs:
             if: env.CHANGED == 'true'
             run: |
                cat /home/runner/work/_temp/.npmrc
-               pnpm install --produ
+               pnpm install --prod
                pnpm run build
                pnpm publish
             working-directory: ./src
