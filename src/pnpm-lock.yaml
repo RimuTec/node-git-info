@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      child-process-promise:
-        specifier: 2.2.1
-        version: 2.2.1
       command-line-args:
         specifier: 6.0.1
         version: 6.0.1
@@ -42,6 +39,9 @@ importers:
       app-root-dir:
         specifier: 1.0.2
         version: 1.0.2
+      child-process-promise:
+        specifier: 2.2.1
+        version: 2.2.1
       eslint:
         specifier: 9.16.0
         version: 9.16.0
