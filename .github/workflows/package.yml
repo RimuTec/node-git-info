@@ -92,9 +92,9 @@ jobs:
             if: env.CHANGED == 'true'
             run: |
                cat /home/runner/work/_temp/.npmrc
-               pnpm install
+               pnpm install --frozen-lockfile
                pnpm build
-               pnpm install --prod --force
+               pnpm prune --prod
                pnpm publish --no-git-checks
             working-directory: ./src
             env:
