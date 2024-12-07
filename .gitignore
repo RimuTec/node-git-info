@@ -3,3 +3,5 @@ build
 coverage
 .pnpm-store
 git.properties
+tmp
+src/publish

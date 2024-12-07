@@ -1,6 +1,6 @@
 {
    "name": "@RimuTec/node-git-info",
-   "version": "0.11.6",
+   "version": "0.11.7",
    "description": "A simple package to get git information from a git repository. Drop-in replacement for `node-git-info`.",
    "main": "build/index.js",
    "scripts": {
@@ -16,7 +16,10 @@
       "upgrade-all": "pnpm upgrade:prepare && pnpm upgrade:packages && pnpm install && pnpm upgrade:fix-vulnerabilities && pnpm build && pnpm test:coverage",
       "upgrade:prepare": "./remove-intermediate-files.sh && rm -rf pnpm-lock.yaml && rm -rf ../.pnpm-store",
       "upgrade:packages": "pnpx npm-check-updates -u -p pnpm",
-      "upgrade:fix-vulnerabilities": "pnpm audit fix || echo \"Could not resolve some vulnerabilities\""
+      "upgrade:fix-vulnerabilities": "pnpm audit fix || echo \"Could not resolve some vulnerabilities\"",
+      "publish:prepare": "pnpm tsx prepare-publish.ts",
+      "publish:pack": "rm -rf /work/tmp/test-publish && mkdir /work/tmp/test-publish && cd /work/src/publish && pnpm pack --pack-destination /work/tmp/test-publish",
+      "publish:inspect": "rm -rf /work/tmp/temp-inspect && mkdir /work/tmp/temp-inspect && tar -xzf /work/tmp/test-publish/RimuTec-node-git-info-0.11.6.tgz -C /work/tmp/temp-inspect/"
    },
    "author": "RimuTec Ltd",
    "license": "MIT",
@@ -39,6 +42,7 @@
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
       "@types/command-line-args": "5.2.3",
+      "@types/fs-extra": "11.0.4",
       "@types/jest": "29.5.14",
       "@types/mock-fs": "4.13.4",
       "@types/node": "22.10.1",
@@ -48,6 +52,7 @@
       "child-process-promise": "2.2.1",
       "eslint": "9.16.0",
       "expect": "29.7.0",
+      "fs-extra": "11.2.0",
       "jest": "29.7.0",
       "mock-fs": "5.4.1",
       "properties-reader": "2.3.0",
@@ -57,6 +62,13 @@
       "ts-jest": "29.2.5",
       "ts-node": "10.9.2",
       "tslib": "2.8.1",
+      "tsx": "4.19.2",
       "typescript": "5.7.2"
-   }
+   },
+   "files": [
+      ".npmignore",
+      "package.json",
+      "build",
+      "node_modules"
+   ]
 }

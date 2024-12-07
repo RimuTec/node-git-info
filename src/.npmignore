@@ -1,0 +1,3 @@
+*.integration.js
+*.micro.js
+jest.config.js

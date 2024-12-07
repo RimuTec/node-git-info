@@ -94,8 +94,14 @@ jobs:
                cat /home/runner/work/_temp/.npmrc
                pnpm install --frozen-lockfile
                pnpm build
-               pnpm prune --prod
-               pnpm publish --no-git-checks
+               pnpm publish:prepare
+               echo "****************************************************"
+               ls -la publish
+               echo "****************************************************"
+               cat publish/package.json
+               echo "****************************************************"
+               cd publish
+               pnpm publish
             working-directory: ./src
             env:
                NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

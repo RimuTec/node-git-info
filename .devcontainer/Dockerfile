@@ -1,5 +1,5 @@
 FROM node:22.11.0
-# Last version check on 04 Dec 2024.
+# Last version check on 07 Dec 2024.
 # This is an LTS version.
 # Check for new versions at https://nodejs.org/en/ or at https://hub.docker.com/_/node
 # [Manfred]
@@ -24,10 +24,15 @@ RUN apt-get install -y \
 
 ################################################################################
 # Replace npm with pnpm
-RUN npm install -g pnpm@9.14.4
-# Last version check on 04 Dec 2024.
+RUN npm install -g pnpm@9.15.0
+# Last version check on 07 Dec 2024.
 # Newer versions might be available at https://www.npmjs.com/search?q=yarn
 RUN npm uninstall npm -g
 # In case the previous uninstall command doesn't work, other options are described at
 # https://docs.npmjs.com/cli/v7/using-npm/removal
 # [Manfred]
+
+
+################################################################################
+# Install jq
+RUN apt-get update && apt-get install -y jq
