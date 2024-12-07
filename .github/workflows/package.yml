@@ -11,6 +11,7 @@ on:
    push:
       branches:
          - main
+   workflow_dispatch:
 
 jobs:
    build:
@@ -91,6 +92,8 @@ jobs:
             if: env.CHANGED == 'true'
             run: |
                cat /home/runner/work/_temp/.npmrc
+               npm install --production
+               npm run build
                npm publish
             working-directory: ./src
             env:
