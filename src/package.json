@@ -1,6 +1,6 @@
 {
    "name": "@RimuTec/node-git-info",
-   "version": "0.11.10",
+   "version": "0.11.11",
    "description": "A simple package to get git information from a git repository. Drop-in replacement for `node-git-info`.",
    "main": "build/index.js",
    "scripts": {
@@ -49,7 +49,6 @@
       "@types/properties-reader": "2.1.3",
       "@types/tmp": "0.2.6",
       "app-root-dir": "1.0.2",
-      "child-process-promise": "2.2.1",
       "eslint": "9.16.0",
       "expect": "29.7.0",
       "fs-extra": "11.2.0",

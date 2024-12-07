@@ -1,8 +1,10 @@
 'use strict';
 
 import { DateTime } from 'ts-luxon';
+import { exec as execCallback } from 'child_process';
+import { promisify } from 'util';
 
-var exec = require('child-process-promise').exec;
+const exec = promisify(execCallback);
 
 export async function getBranch() {
    const result = await exec('git symbolic-ref HEAD | sed -e "s/refs\\/heads\\//"/');
