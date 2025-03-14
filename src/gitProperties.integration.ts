@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { writeProperties } from './gitProperties';
 
-const tmpTestOutputFolder = '/work/tmp';
+const tmpTestOutputFolder = '../tmp';
 
 describe(`gitProperties`, () => {
    beforeAll(() => {

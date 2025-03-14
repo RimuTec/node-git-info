@@ -1,9 +1,19 @@
 {
+   "cSpell.language": "en-US",
+   "cSpell.words": [
+      "luxon",
+      "pnpx",
+      "rimutec"
+   ],
    "editor.formatOnSave": true,
    "editor.guides.bracketPairs": true,
+   "editor.indentSize": "tabSize",
    "editor.tabSize": 3,
    "git.rebaseWhenSync": true,
-   "jestrunner.codeLensSelector": "**/*.{micro,integration}.{js,jsx,ts,tsx}",
+   "github-actions.workflows.pinned.workflows": [
+      ".github/workflows/package.yml",
+      ".github/workflows/upgrade-deps.yml"
+   ],
    "remote.restoreForwardedPorts": false,
    "remote.autoForwardPortsSource": "output",
    "remote.autoForwardPorts": false,
@@ -22,7 +32,14 @@
       }
    },
    "typescript.preferences.quoteStyle": "single",
-   "github-actions.workflows.pinned.workflows": [
-      ".github/workflows/package.yml"
+   "vscode-vitest.packageManager": "pnpm",
+   "vscode-vitest.testCommand": "vitest:run",
+   "vscode-vitest.executableOptions": {
+      "run": true,
+      "watch": false,
+      "debug": true
+   },
+   "vscode-vitest.preTest": [
+      "cd /work/src",
    ],
 }

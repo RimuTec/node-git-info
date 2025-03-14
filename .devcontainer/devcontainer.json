@@ -1,4 +1,5 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
+// cSpell: disable
 {
    "name": "RimuTec node-git-info",
    "dockerComposeFile": [
@@ -13,15 +14,14 @@
             "dbaeumer.vscode-eslint",
             "donjayamanne.githistory",
             "editorconfig.editorconfig",
-            "firsttris.vscode-jest-runner",
             "github.copilot@prerelease",
             "github.copilot-chat@prerelease",
             "github.vscode-github-actions",
             "mhutchie.git-graph",
             "ms-vsliveshare.vsliveshare",
             "mutantdino.resourcemonitor",
-            "okwang.restart-language-server", // Source: https://github.com/latel/restart-language-server
-            "rtbenfield.vscode-jest-test-adapter",
+            "rluvaton.vscode-vitest", // Source: https://github.com/rluvaton/vitest-vs-code-plugin
+            "streetsidesoftware.code-spell-checker",
             "tsandall.opa",
             "usernamehw.errorlens"
          ]

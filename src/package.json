@@ -20,6 +20,7 @@
       "publish:prepare": "pnpm tsx prepare-publish.ts",
       "publish:pack": "rm -rf /work/tmp/test-publish && mkdir /work/tmp/test-publish && cd /work/src/publish && pnpm pack --pack-destination /work/tmp/test-publish",
       "publish:inspect": "rm -rf /work/tmp/temp-inspect && mkdir /work/tmp/temp-inspect && tar -xzf /work/tmp/test-publish/RimuTec-node-git-info-0.11.6.tgz -C /work/tmp/temp-inspect/",
+      "vitest:run": "vitest --run --passWithNoTests",
       "restart-tsserver": "tsx restart-tsserver.ts"
    },
    "author": "RimuTec Ltd",
