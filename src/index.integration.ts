@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as tmp from 'tmp';
 import * as properties from './gitProperties';
 const appRootDir = 'test';//require('app-root-dir').get();
-import PropertiesReader = require('properties-reader');
+import PropertiesReader from 'properties-reader';
 import { deleteFilesRecursivelyByName } from './utils';
 
 describe('git.properties', () => {

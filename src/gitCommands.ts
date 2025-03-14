@@ -1,6 +1,6 @@
 'use strict';
 
-import { DateTime } from 'ts-luxon';
+import { DateTime } from 'luxon';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
 

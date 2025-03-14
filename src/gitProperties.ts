@@ -2,7 +2,7 @@
 
 import { promises as fs } from 'fs';
 // var fs = require('fs');
-var gitCommand = require('./gitCommands');
+import * as gitCommand from './gitCommands';
 
 /**
  * @param destinationPath   Directory to save git.properties file to (directory must already exist).

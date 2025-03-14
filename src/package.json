@@ -6,20 +6,21 @@
    "scripts": {
       "ngi": "pnpm link -g . && pnpm build && node-git-info",
       "build": "./remove-erroneous-files.sh && tsc",
-      "restore-deps": "pnpm install --frozen-lockfile",
+      "restore-deps": "pnpm install --frozen-lockfile && pnpm restart-tsserver",
       "pre-commit": "./remove-intermediate-files.sh && pnpm restore-deps && pnpm build && pnpm test:coverage",
       "preinstall": "npx only-allow pnpm",
       "test": "pnpm test:micro && pnpm test:integration",
-      "test:coverage": "jest --coverage --passWithNoTests --testMatch '**/?(*.)+(micro|integration).[jt]s?(x)'",
-      "test:integration": "jest --passWithNoTests --testMatch '/work/src/**/*.integration.ts'",
-      "test:micro": "jest --passWithNoTests --testMatch '/work/src/**/*.micro.ts'",
-      "upgrade-all": "pnpm upgrade:prepare && pnpm upgrade:packages && pnpm install && pnpm upgrade:fix-vulnerabilities && pnpm build && pnpm test:coverage",
+      "test:coverage": "vitest --coverage --run",
+      "test:integration": "vitest --config vitest.integration.config.ts --run --passWithNoTests",
+      "test:micro": "vitest --config vitest.micro.config.ts --run --passWithNoTests",
+      "upgrade:all": "pnpm upgrade:prepare && pnpm upgrade:packages && pnpm install && pnpm restart-tsserver && pnpm upgrade:fix-vulnerabilities && pnpm build && pnpm test:coverage",
       "upgrade:prepare": "./remove-intermediate-files.sh && rm -rf pnpm-lock.yaml && rm -rf ../.pnpm-store",
       "upgrade:packages": "pnpx npm-check-updates -u -p pnpm",
       "upgrade:fix-vulnerabilities": "pnpm audit fix || echo \"Could not resolve some vulnerabilities\"",
       "publish:prepare": "pnpm tsx prepare-publish.ts",
       "publish:pack": "rm -rf /work/tmp/test-publish && mkdir /work/tmp/test-publish && cd /work/src/publish && pnpm pack --pack-destination /work/tmp/test-publish",
-      "publish:inspect": "rm -rf /work/tmp/temp-inspect && mkdir /work/tmp/temp-inspect && tar -xzf /work/tmp/test-publish/RimuTec-node-git-info-0.11.6.tgz -C /work/tmp/temp-inspect/"
+      "publish:inspect": "rm -rf /work/tmp/temp-inspect && mkdir /work/tmp/temp-inspect && tar -xzf /work/tmp/test-publish/RimuTec-node-git-info-0.11.6.tgz -C /work/tmp/temp-inspect/",
+      "restart-tsserver": "tsx restart-tsserver.ts"
    },
    "author": "RimuTec Ltd",
    "license": "MIT",
@@ -37,37 +38,40 @@
    },
    "dependencies": {
       "command-line-args": "6.0.1",
-      "ts-luxon": "5.0.6"
+      "luxon": "3.5.0"
    },
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
       "@types/command-line-args": "5.2.3",
       "@types/fs-extra": "11.0.4",
       "@types/jest": "29.5.14",
+      "@types/luxon": "3.4.2",
       "@types/mock-fs": "4.13.4",
       "@types/node": "22.13.10",
       "@types/properties-reader": "2.1.3",
       "@types/tmp": "0.2.6",
+      "@vitest/coverage-v8": "3.0.8",
       "app-root-dir": "1.0.2",
       "eslint": "9.22.0",
       "expect": "29.7.0",
       "fs-extra": "11.3.0",
-      "jest": "29.7.0",
       "mock-fs": "5.5.0",
       "properties-reader": "2.3.0",
-      "sinon": "19.0.2",
-      "sinon-chai": "4.0.0",
       "tmp": "0.2.3",
-      "ts-jest": "29.2.6",
-      "ts-node": "10.9.2",
       "tslib": "2.8.1",
       "tsx": "4.19.3",
-      "typescript": "5.8.2"
+      "typescript": "5.8.2",
+      "vitest": "3.0.8"
    },
    "files": [
       ".npmignore",
       "package.json",
       "build",
       "node_modules"
-   ]
+   ],
+   "pnpm": {
+      "onlyBuiltDependencies": [
+         "esbuild"
+      ]
+   }
 }
