@@ -1,3 +1,5 @@
+# cSpell: words getent
+
 name: Upgrade Dependencies
 
 # This job works as expected as of the date of this comment. We'll need to monitor
@@ -6,7 +8,7 @@ name: Upgrade Dependencies
 # The job in this workflow can be improved with potentially two different options
 # the dev container should get a non-root user that has a UID equal to the UID of
 # the current user and a GUI of the group that the current user is in. This would
-# then result in all files the non-root user creates to have the idential UID and
+# then result in all files the non-root user creates to have the identical UID and
 # GID of the current user. This would then avoid the chown command.
 # [Manfred, 17dec2023]
 
@@ -61,7 +63,7 @@ jobs:
             run: |
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
                echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix ./src restore-deps
+               docker exec -u node ${{ env.CONTAINER_NAME }} cd /work/src && pnpm restore-deps
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
@@ -69,7 +71,7 @@ jobs:
             run: |
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
                echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix ./src upgrade-all
+               docker exec -u node ${{ env.CONTAINER_NAME }} cd /work/src && pnpm upgrade-all
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
