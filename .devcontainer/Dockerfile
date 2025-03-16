@@ -1,3 +1,5 @@
+# cSpell: words procps iputils
+
 # Last version check on 14 Mar 2024.
 
 FROM node:22.14.0
