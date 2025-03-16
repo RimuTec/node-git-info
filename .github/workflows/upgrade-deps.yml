@@ -10,7 +10,7 @@ name: Upgrade Dependencies
 # the current user and a GUI of the group that the current user is in. This would
 # then result in all files the non-root user creates to have the identical UID and
 # GID of the current user. This would then avoid the chown command.
-# [Manfred, 17dec2023]
+# [Manfred, 17mar2025]
 
 on:
    schedule:
