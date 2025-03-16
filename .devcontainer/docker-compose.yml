@@ -27,6 +27,10 @@ services:
          # Without double quotes YAML interprets it as a number based on 22. [Manfred, 24aug2022]
       volumes:
          - ..:/work
+         # If you don't have a .npmrc file in your home directory on the host, it is recommended to
+         # create an empty one. Otherwise docker will create a directory named ".npmrc" in your home
+         # directory on the host. [Manfred, 17mar2025]
+         - ${HOME}/.npmrc:/home/node/.npmrc:ro
       environment:
          - COMPOSE_PROJECT_NAME=rimutec
          - EXPRESS_PORT=3000
