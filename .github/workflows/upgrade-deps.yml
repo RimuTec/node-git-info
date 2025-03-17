@@ -21,6 +21,7 @@ jobs:
    upgrade:
       runs-on: ubuntu-latest
       env:
+         CI: true
          CONTAINER_NAME: node-git-info-dev
 
       steps:
@@ -70,6 +71,8 @@ jobs:
          -  name: Run upgrade-all script
             run: |
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+               echo "##########"
+               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'whoami'
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:all'
                echo "##########"
