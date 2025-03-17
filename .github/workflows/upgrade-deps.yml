@@ -77,7 +77,7 @@ jobs:
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'pwd'
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'ls -la'
                echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix /work/src upgrade:all
+               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade-all'
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
