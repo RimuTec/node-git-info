@@ -64,7 +64,7 @@ jobs:
             run: |
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
                echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm restore-deps'
+               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix /work/src restore-deps
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
@@ -74,7 +74,7 @@ jobs:
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'whoami'
                echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:all'
+               docker exec -u node ${{ env.CONTAINER_NAME }} pnpm --prefix /work/src upgrade:all
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
