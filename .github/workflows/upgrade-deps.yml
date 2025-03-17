@@ -68,18 +68,35 @@ jobs:
                echo "##########"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
+
          -  name: Run upgrade-all script
             run: |
+               echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
-               echo "##########"
+               echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'whoami'
-               echo "##########"
+               echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'pwd'
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'ls -la'
-               echo "##########"
-               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:all'
-               echo "##########"
+               echo "####################"
+               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:prepare'
+               echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+               echo "####################"
+
+
+         # -  name: Run upgrade-all script
+         #    run: |
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
+         #       echo "##########"
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'whoami'
+         #       echo "##########"
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'pwd'
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'ls -la'
+         #       echo "##########"
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:all'
+         #       echo "##########"
+         #       docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
 
          -  name: Tear down dev container
             run: |
