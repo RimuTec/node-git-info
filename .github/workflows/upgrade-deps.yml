@@ -81,6 +81,8 @@ jobs:
                echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:prepare'
                echo "####################"
+               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm restore-deps'
+               echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm upgrade:packages'
                echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
