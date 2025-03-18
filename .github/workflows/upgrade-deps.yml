@@ -30,6 +30,10 @@ jobs:
             # Newer version may be available from https://github.com/actions/checkout
             # Last version check: 04 Dec 2023
 
+         -  name: Create empty .npmrc file
+            run: |
+               touch ~/.npmrc
+
          -  name: Build dev container
             run: |
                docker compose -f .devcontainer/docker-compose.yml -p rimutec build
