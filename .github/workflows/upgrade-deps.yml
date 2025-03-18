@@ -89,7 +89,7 @@ jobs:
                echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -la /home/node
                echo "####################"
-               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm exec ncu -u -p pnpm'
+               docker exec -u node ${{ env.CONTAINER_NAME }} sh -c 'cd /work/src && pnpm exec npm-check-updates -u -p pnpm'
                echo "####################"
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
                echo "####################"
