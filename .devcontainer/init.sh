@@ -49,7 +49,7 @@ runuser -l node -c 'echo "alias p='pnpm'" >> /home/node/.bashrc && source /home/
 
 ################################################################################
 # Change ownership of the work directory to the node user
-chown -R node:node /work
+# chown -R node:node /work
 # This is not necessary on WSL2, but it is on Linux. [Manfred, 10 Dec 2023]
 
 
