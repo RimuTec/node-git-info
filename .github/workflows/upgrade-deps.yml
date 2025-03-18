@@ -55,10 +55,10 @@ jobs:
                echo "##########"
                git status
 
-         -  name: Change owner of /work/src directory
-            # The following needs to have root privileges in the dev container, so don't run
-            # it as non-root user 'node'.
-            run: docker exec ${{ env.CONTAINER_NAME }} chown -R node:node /work/src
+         # -  name: Change owner of /work/src directory
+         #    # The following needs to have root privileges in the dev container, so don't run
+         #    # it as non-root user 'node'.
+         #    run: docker exec ${{ env.CONTAINER_NAME }} chown -R node:node /work/src
 
          -  name: Restore dependencies
             run: |
