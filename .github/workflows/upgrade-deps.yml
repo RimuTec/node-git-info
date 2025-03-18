@@ -60,6 +60,13 @@ jobs:
          #    # it as non-root user 'node'.
          #    run: docker exec ${{ env.CONTAINER_NAME }} chown -R node:node /work/src
 
+         -  name: Give access to /work/src directory
+            # The following needs to have root privileges in the dev container, so don't run
+            # it as non-root user 'node'.
+            run: |
+               docker exec ${{ env.CONTAINER_NAME }} chmod -R a+rw /work
+               docker exec ${{ env.CONTAINER_NAME }} sh -c 'find /work -type d -exec chmod a+rx {} \;'
+
          -  name: Restore dependencies
             run: |
                docker exec -u node ${{ env.CONTAINER_NAME }} ls -l /work/src
