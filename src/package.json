@@ -39,7 +39,7 @@
    },
    "dependencies": {
       "command-line-args": "6.0.1",
-      "luxon": "3.5.0"
+      "luxon": "3.6.0"
    },
    "devDependencies": {
       "@types/app-root-dir": "0.1.4",
