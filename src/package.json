@@ -57,7 +57,7 @@
       "expect": "29.7.0",
       "fs-extra": "11.3.0",
       "mock-fs": "5.5.0",
-      "npm-check-updates": "17.1.16",
+      "npm-check-updates": "17.1.18",
       "properties-reader": "2.3.0",
       "tmp": "0.2.3",
       "tslib": "2.8.1",
