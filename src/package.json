@@ -53,7 +53,7 @@
       "@types/tmp": "0.2.6",
       "@vitest/coverage-v8": "3.2.3",
       "app-root-dir": "1.0.2",
-      "eslint": "9.28.0",
+      "eslint": "9.29.0",
       "expect": "30.0.0",
       "fs-extra": "11.3.0",
       "mock-fs": "5.5.0",
@@ -61,7 +61,7 @@
       "properties-reader": "2.3.0",
       "tmp": "0.2.3",
       "tslib": "2.8.1",
-      "tsx": "4.20.2",
+      "tsx": "4.20.3",
       "typescript": "5.8.3",
       "vitest": "3.2.3"
    },
