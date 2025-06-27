@@ -1,4 +1,5 @@
 {
+   "chat.agent.enabled": true,
    "cSpell.language": "en-US",
    "cSpell.words": [
       "distro",
@@ -11,6 +12,8 @@
    "editor.indentSize": "tabSize",
    "editor.tabSize": 3,
    "git.rebaseWhenSync": true,
+   "github.copilot.nextEditSuggestions.enabled": true,
+   "github-actions.workflows.pinned.refresh.enabled": true,
    "github-actions.workflows.pinned.workflows": [
       ".github/workflows/package.yml",
       ".github/workflows/upgrade-deps.yml"
