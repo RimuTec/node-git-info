@@ -1,8 +1,8 @@
 # cSpell: words procps iputils
 
-# Last version check on 18 Mar 2024.
+# Last version check on 28 Jun 2024.
 
-FROM node:22.14.0
+FROM node:22.17.0
 # This is an LTS version.
 # Check for new versions at https://nodejs.org/en/ or at https://hub.docker.com/_/node
 # [Manfred]
@@ -27,7 +27,7 @@ RUN apt-get install -y \
 
 ################################################################################
 # Replace npm with pnpm
-RUN npm install -g pnpm@10.6.4
+RUN npm install -g pnpm@10.12.4
 # Newer versions might be available at https://www.npmjs.com/search?q=yarn
 RUN npm uninstall npm -g
 # In case the previous uninstall command doesn't work, other options are described at

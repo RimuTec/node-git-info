@@ -5,7 +5,8 @@
       "distro",
       "luxon",
       "pnpx",
-      "rimutec"
+      "rimutec",
+      "vitest",
    ],
    "editor.formatOnSave": true,
    "editor.guides.bracketPairs": true,
