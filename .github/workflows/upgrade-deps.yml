@@ -165,8 +165,8 @@ jobs:
          -  name: Commit changes
             if: ${{ env.changed == 'true' }}
             run: |
-               id -u runneradmin
-               id -g runneradmin
+               id -u
+               id -g
                whoami
                echo "##########"
                ls -l .git/
