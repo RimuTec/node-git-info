@@ -46,7 +46,7 @@
       "@types/command-line-args": "5.2.3",
       "@types/fs-extra": "11.0.4",
       "@types/jest": "30.0.0",
-      "@types/luxon": "3.6.2",
+      "@types/luxon": "3.7.0",
       "@types/mock-fs": "4.13.4",
       "@types/node": "24.1.0",
       "@types/properties-reader": "2.1.3",
