@@ -31,7 +31,8 @@ export async function write(destinationPath: any, callback: any) {
       'git.commit.message.short': git.commitMessageShort,
       'git.commit.user.name': git.commitUserName,
       'git.branch': git.branch,
-      'git.commit.time': git.commitTime
+      // Ensure commit time is a string for properties file
+      'git.commit.time': String(git.commitTime)
    };
 
    var returnInfo = Object.keys(gitProperties).map(function (key: string) {
@@ -50,7 +51,7 @@ export async function write(destinationPath: any, callback: any) {
 
    // fs.writeFile(destinationPathCleaned + 'git.properties', gitPropertiesFormatted, function (err: any) {
    //    if (err) {
-   //       // error has occured saving git.properties
+   //       // error has occurred saving git.properties
    //       console.log('[node-git-info][ERROR]: can\'t create git.properties file.');
    //       writeSuccess = false;
    //    }

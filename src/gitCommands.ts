@@ -38,5 +38,11 @@ export async function getCommitMessageShort() {
 
 export async function getCommitTime() {
    const result = await exec('git log -1 --pretty=format:%ct');
-   return DateTime.fromSeconds(parseInt(result.stdout.trim())).toISO().replace('+00:00', 'Z');
+   // Ensure the result is a valid integer and handle possible NaN
+   const seconds = parseInt(result.stdout.trim(), 10);
+   if (isNaN(seconds)) {
+      throw new Error('Invalid commit time: ' + result.stdout.trim());
+   }
+   // Use toUTC() to ensure UTC output, then toISO() for ISO string
+   return DateTime.fromSeconds(seconds).toUTC().toISO({ suppressMilliseconds: true });
 }
