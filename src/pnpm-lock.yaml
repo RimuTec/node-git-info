@@ -34,8 +34,8 @@ importers:
         specifier: 4.13.4
         version: 4.13.4
       '@types/node':
-        specifier: 24.10.2
-        version: 24.10.2
+        specifier: 25.0.0
+        version: 25.0.0
       '@types/properties-reader':
         specifier: 2.1.3
         version: 2.1.3
@@ -44,7 +44,7 @@ importers:
         version: 0.2.6
       '@vitest/coverage-v8':
         specifier: 4.0.15
-        version: 4.0.15(vitest@4.0.15(@types/node@24.10.2)(tsx@4.21.0))
+        version: 4.0.15(vitest@4.0.15(@types/node@25.0.0)(tsx@4.21.0))
       app-root-dir:
         specifier: 1.0.2
         version: 1.0.2
@@ -61,8 +61,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       npm-check-updates:
-        specifier: 19.1.2
-        version: 19.1.2
+        specifier: 19.2.0
+        version: 19.2.0
       properties-reader:
         specifier: 2.3.0
         version: 2.3.0
@@ -80,7 +80,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.15
-        version: 4.0.15(@types/node@24.10.2)(tsx@4.21.0)
+        version: 4.0.15(@types/node@25.0.0)(tsx@4.21.0)
 
 packages:
 
@@ -667,8 +667,8 @@ packages:
   '@types/mock-fs@4.13.4':
     resolution: {integrity: sha512-mXmM0o6lULPI8z3XNnQCpL0BGxPwx1Ul1wXYEPBGl4efShyxW2Rln0JOPEWGyZaYZMM6OVXM/15zUuFMY52ljg==}
 
-  '@types/node@24.10.2':
-    resolution: {integrity: sha512-WOhQTZ4G8xZ1tjJTvKOpyEVSGgOTvJAfDK3FNFgELyaTpzhdgHVHeqW8V+UJvzF5BT+/B54T/1S2K6gd9c7bbA==}
+  '@types/node@25.0.0':
+    resolution: {integrity: sha512-rl78HwuZlaDIUSeUKkmogkhebA+8K1Hy7tddZuJ3D0xV8pZSfsYGTsliGUol1JPzu9EKnTxPC4L1fiWouStRew==}
 
   '@types/properties-reader@2.1.3':
     resolution: {integrity: sha512-k4fBDScfZ9xQjIrZm0HcJlyWVZ5ltE9W8N2AIecsgFXfg5REhKKHEwmpRvSQvEPWnIEsL67K70P1tx7kGo+cjQ==}
@@ -1119,8 +1119,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  npm-check-updates@19.1.2:
-    resolution: {integrity: sha512-FNeFCVgPOj0fz89hOpGtxP2rnnRHR7hD2E8qNU8SMWfkyDZXA/xpgjsL3UMLSo3F/K13QvJDnbxPngulNDDo/g==}
+  npm-check-updates@19.2.0:
+    resolution: {integrity: sha512-XSIuL0FNgzXPDZa4lje7+OwHjiyEt84qQm6QMsQRbixNY5EHEM9nhgOjxjlK9jIbN+ysvSqOV8DKNS0zydwbdg==}
     engines: {node: '>=20.0.0', npm: '>=8.12.1'}
     hasBin: true
 
@@ -1634,7 +1634,7 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
       jest-regex-util: 30.0.1
 
   '@jest/schemas@30.0.5':
@@ -1647,7 +1647,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -1746,7 +1746,7 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -1767,15 +1767,15 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
 
   '@types/luxon@3.7.1': {}
 
   '@types/mock-fs@4.13.4':
     dependencies:
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
 
-  '@types/node@24.10.2':
+  '@types/node@25.0.0':
     dependencies:
       undici-types: 7.16.0
 
@@ -1791,7 +1791,7 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
-  '@vitest/coverage-v8@4.0.15(vitest@4.0.15(@types/node@24.10.2)(tsx@4.21.0))':
+  '@vitest/coverage-v8@4.0.15(vitest@4.0.15(@types/node@25.0.0)(tsx@4.21.0))':
     dependencies:
       '@bcoe/v8-coverage': 1.0.2
       '@vitest/utils': 4.0.15
@@ -1804,7 +1804,7 @@ snapshots:
       obug: 2.1.1
       std-env: 3.10.0
       tinyrainbow: 3.0.3
-      vitest: 4.0.15(@types/node@24.10.2)(tsx@4.21.0)
+      vitest: 4.0.15(@types/node@25.0.0)(tsx@4.21.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -1817,13 +1817,13 @@ snapshots:
       chai: 6.2.1
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.15(vite@7.2.7(@types/node@24.10.2)(tsx@4.21.0))':
+  '@vitest/mocker@4.0.15(vite@7.2.7(@types/node@25.0.0)(tsx@4.21.0))':
     dependencies:
       '@vitest/spy': 4.0.15
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.2.7(@types/node@24.10.2)(tsx@4.21.0)
+      vite: 7.2.7(@types/node@25.0.0)(tsx@4.21.0)
 
   '@vitest/pretty-format@4.0.15':
     dependencies:
@@ -2200,7 +2200,7 @@ snapshots:
   jest-mock@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
       jest-util: 30.2.0
 
   jest-regex-util@30.0.1: {}
@@ -2208,7 +2208,7 @@ snapshots:
   jest-util@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
       chalk: 4.1.2
       ci-info: 4.3.1
       graceful-fs: 4.2.11
@@ -2286,7 +2286,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  npm-check-updates@19.1.2: {}
+  npm-check-updates@19.2.0: {}
 
   obug@2.1.1: {}
 
@@ -2447,7 +2447,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  vite@7.2.7(@types/node@24.10.2)(tsx@4.21.0):
+  vite@7.2.7(@types/node@25.0.0)(tsx@4.21.0):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -2456,14 +2456,14 @@ snapshots:
       rollup: 4.53.3
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
       fsevents: 2.3.3
       tsx: 4.21.0
 
-  vitest@4.0.15(@types/node@24.10.2)(tsx@4.21.0):
+  vitest@4.0.15(@types/node@25.0.0)(tsx@4.21.0):
     dependencies:
       '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.2.7(@types/node@24.10.2)(tsx@4.21.0))
+      '@vitest/mocker': 4.0.15(vite@7.2.7(@types/node@25.0.0)(tsx@4.21.0))
       '@vitest/pretty-format': 4.0.15
       '@vitest/runner': 4.0.15
       '@vitest/snapshot': 4.0.15
@@ -2480,10 +2480,10 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.2.7(@types/node@24.10.2)(tsx@4.21.0)
+      vite: 7.2.7(@types/node@25.0.0)(tsx@4.21.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 24.10.2
+      '@types/node': 25.0.0
     transitivePeerDependencies:
       - jiti
       - less
