@@ -61,8 +61,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       npm-check-updates:
-        specifier: 22.2.0
-        version: 22.2.0
+        specifier: 22.2.1
+        version: 22.2.1
       properties-reader:
         specifier: 3.0.1
         version: 3.0.1
@@ -995,8 +995,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  npm-check-updates@22.2.0:
-    resolution: {integrity: sha512-kaxgbkGkCOtoSrsUXShgcEiEfrRPqmOGk6Yeya+5hoNptblu9vuE8/PLABUSJz+IeNgKJBFxcC3UrBYmKsB8iA==}
+  npm-check-updates@22.2.1:
+    resolution: {integrity: sha512-mGdIJfhtg+q0BzhbOpbOL73zhMZlgBQMG4wnBwPMMD5k96028UCuV0753YeSYk9odoh7HWK6/cY69bWxT7o+yg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: '>=10.0.0'}
     hasBin: true
 
@@ -2061,7 +2061,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  npm-check-updates@22.2.0: {}
+  npm-check-updates@22.2.1: {}
 
   obug@2.1.1: {}
 
