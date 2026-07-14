@@ -61,7 +61,7 @@
       "properties-reader": "3.0.1",
       "tmp": "0.2.7",
       "tslib": "2.8.1",
-      "tsx": "4.23.0",
+      "tsx": "4.23.1",
       "typescript": "7.0.2",
       "vitest": "4.1.10"
    },
