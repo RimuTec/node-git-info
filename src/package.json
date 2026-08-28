@@ -54,7 +54,7 @@
       "@vitest/coverage-v8": "4.1.11",
       "app-root-dir": "1.0.2",
       "eslint": "10.9.1",
-      "expect": "30.4.1",
+      "expect": "30.5.0",
       "fs-extra": "11.4.0",
       "mock-fs": "5.5.0",
       "npm-check-updates": "23.1.0",
