@@ -55,7 +55,7 @@
       "app-root-dir": "1.0.2",
       "eslint": "10.11.0",
       "expect": "30.5.2",
-      "fs-extra": "11.4.0",
+      "fs-extra": "11.4.1",
       "mock-fs": "5.5.0",
       "npm-check-updates": "23.1.0",
       "properties-reader": "3.0.1",
